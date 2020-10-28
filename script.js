@@ -76,39 +76,38 @@ xhr2.send();
 
 
 //Ariahnnah's page 
-
-//Half-Orc page
-//const lang3 = document.getElementById(`lang3`);
-//const trait3 = document.getElementById(`trait3`);
-//const align3 = document.getElementById(`align3`);
+//created variables for each p tag in the information cards
+const lang3 = document.getElementById(`lang3`);
+const trait3 = document.getElementById(`trait3`);
+const align3 = document.getElementById(`align3`);
 
 //Create request to server
+let xhr3 = new XMLHttpRequest();
 
-//let xhr3 = new XMLHttpRequest();
-
-//xhr3.onreadystatechange = () => {
-   // if(xhr3.readyState === 4)
-   // if( xhr3.status = 200){
+xhr3.onreadystatechange = () => {
+    if(xhr3.readyState === 4)
+    if( xhr3.status = 200){
 //Body of the callback where data is parsed and we use DOM manipulation
-    //    const data = JSON.parse(xhr3.response);
-    //    console.log(data);
-    //    lang3.innerHTML = data.language_desc;
-
-    //    trait3.innerHTML = data.age + " " + data.size_description;
-    //    trait3.innerHTML += " Your traits are " + data.traits[0].name + ", " + data.traits[1].name + ", and " + data.traits[2].name;
-
-    //    align3.innerHTML = data.alignment;
+        const data = JSON.parse(xhr3.response);
+        console.log(data);
+//Information for the language card
+        lang3.innerHTML = data.language_desc;
+//Information for the traits card. Used concatination to put the different pieces together
+        trait3.innerHTML = data.age + " " + data.size_description;
+        trait3.innerHTML += " Your traits are " + data.traits[0].name + ", " + data.traits[1].name + ", and " + data.traits[2].name;
+//Information for the alignment card
+        align3.innerHTML = data.alignment;
 //else if where we throw an error if we don't have success connecting
-   // }else if (xhr3.status === 404){
-   //     alert(`Oh no the page wasn't found`);
-   // } else if(xhr3.status === 500){
-    //    alert(`Awhh man the server is taking a break`);
-   // }
-//};
+    }else if (xhr3.status === 404){
+        alert(`Oh no the page wasn't found`);
+    } else if(xhr3.status === 500){
+        alert(`Awhh man the server is taking a break`);
+    }
+};
 
 //open server request
-//xhr3.open(`GET`, 'https://www.dnd5eapi.co/api/races/half-orc');
+xhr3.open(`GET`, 'https://www.dnd5eapi.co/api/races/half-orc');
 //send server request
-//xhr3.send();
+xhr3.send();
 
 
